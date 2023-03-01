@@ -26,11 +26,11 @@ import {ref} from "vue";
 import {addTodo, getTodo} from "../api/home";
 import Todolist from "../components/Todolist.vue";
 import {useAppStore} from "../store/app";
-import {todoData} from "../types/home";
+import routes from "../routers";
 
 const token = localStorage.getItem("token");
 const login = ref("登出");
-const todos = ref<todoData>();
+const todos = ref();
 const appState = useAppStore();
 const version = ref();
 const todo = ref("");
@@ -41,7 +41,6 @@ const init = () => {
     return;
   }
   getTodo().then((res) => {
-    console.log(res);
     todos.value = res.data;
     version.value = appState.version;
   });
@@ -51,16 +50,16 @@ init();
 
 const HandleLogin = () => {
   if (token == null) {
-    window.location.href = "/login";
+    routes.push("/login");
   } else {
     localStorage.removeItem("token");
-    window.location.href = "/";
+    routes.push("/");
   }
 };
 
 const HandleAdd = () => {
   if (token == null) {
-    window.location.href = "/login";
+    routes.push("/login");
   } else {
     if (todo.value.trim() === "") {
       alert("不能为空");

@@ -9,7 +9,7 @@ import {useAppStore} from "./store/app";
 import progress from 'nprogress';
 import 'nprogress/nprogress.css'
 
-axios.defaults.baseURL = 'http://localhost:8081/todo'
+axios.defaults.baseURL = 'https://cloud.jmzzz.cn:8081/todo'
 
 createApp(App).use(routes).use(store).mount('#app')
 

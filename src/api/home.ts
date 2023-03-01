@@ -7,7 +7,7 @@ export interface addTodoData {
 export interface addResponse {
     code: number,
     msg: string,
-    data: Object,
+    data: any,
 }
 
 export function getTodo() {
