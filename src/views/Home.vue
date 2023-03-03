@@ -7,10 +7,10 @@
       </button>
     </div>
     <transition-group name="bounce">
-      <Todolist v-for="todo in todos" :key="todo.id" :todo="todo"/>
+      <Todolist v-for="todo in todos" :key="todo.id" :todo="todo" :is_done="todo.is_done"/>
     </transition-group>
     <div class="flex rounded-2xl shadow mt-4 h-12 transition hover:shadow-2xl" v-if="token">
-      <input class="ml-8 flex-1 outline-0" v-model="todo">
+      <input class="ml-8 flex-1 outline-0 rounded-2xl" v-model="todo">
       <button class="ml-auto pr-8 pl-4" @click="HandleAdd">
         添加
       </button>
@@ -53,7 +53,7 @@ const HandleLogin = () => {
     routes.push("/login");
   } else {
     localStorage.removeItem("token");
-    routes.push("/");
+    location.reload();
   }
 };
 
